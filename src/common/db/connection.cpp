@@ -32,6 +32,7 @@ void check_result(const PGresult* result) {
     case PGRES_SINGLE_TUPLE:
     case PGRES_PIPELINE_SYNC:
     case PGRES_PIPELINE_ABORTED:
+    case PGRES_TUPLES_CHUNK:
         break;
 
     case PGRES_BAD_RESPONSE:
