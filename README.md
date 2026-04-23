@@ -16,6 +16,29 @@ than the original project.
 
 ---
 
+## Building
+
+### Requirements
+
+```
+apt install -y cmake clang-18 ninja libpq-dev postgresql liblmdb++-dev \
+    protobuf-compiler-grpc libprotoc-dev libgrpc++-dev libgrpc-dev
+```
+
+Also install:
+
+- Boost 1.88 or newer
+
+### Building
+
+```
+git submodule update --init --recursive && \
+cmake -B build -S . && \
+cmake --build build
+```
+
+---
+
 ## Licensing
 
 This repository contains code under **two distinct licenses**,
