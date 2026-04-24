@@ -33,7 +33,7 @@ Also install:
 
 ```
 git submodule update --init --recursive && \
-cmake -B build -S . && \
+cmake --preset default &&
 cmake --build build
 ```
 
