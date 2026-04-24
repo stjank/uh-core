@@ -17,7 +17,8 @@
                 "BUILD_TOOLS": "ON",
                 "ENABLE_CCACHE": "OFF",
                 "ENABLE_ASAN": "ON",
-                "ENABLE_UBSAN": "ON"
+                "ENABLE_UBSAN": "ON",
+                "CMAKE_POLICY_VERSION_MINIMUM": "3.5"
             }
         }
     ]
