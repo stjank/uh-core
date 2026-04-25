@@ -161,7 +161,7 @@ endif()
 # Compile Options
 #
 set(CMAKE_CXX_STANDARD 20)
-add_compile_options(-Wall -Werror)
+add_compile_options(-Wall)
 
 #
 # GCC 13 and before issue warnings when using coroutines. Re-try with a newer
