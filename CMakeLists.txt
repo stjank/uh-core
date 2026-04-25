@@ -175,8 +175,10 @@ add_link_options(-Wno-odr)
 add_compile_options(-pthread)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    message(STATUS "Link Time Optimizations: On")
     set(CMAKE_INTERPROCEDURAL_OPTIMIZATION ON)
 else()
+    message(STATUS "Link Time Optimizations: Off")
     set(CMAKE_INTERPROCEDURAL_OPTIMIZATION OFF)
 endif()
 
