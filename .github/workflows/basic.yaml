@@ -8,6 +8,9 @@ on:
 
 jobs:
     build-and-test:
+        env:
+            CXX: clang++
+            CC: clang
         runs-on: ubuntu-latest
         container:
             image: ubuntu:26.04
