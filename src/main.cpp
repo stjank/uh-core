@@ -76,9 +76,10 @@ int main(int argc, char** argv) {
         global_service_role = config->role;
 
         log::init(config->log);
+        const auto& info = project_info::get();
 
-        LOG_INFO() << "starting " << PROJECT_NAME << " " << PROJECT_VERSION
-                   << " [" << PROJECT_VCSID << "], running as "
+        LOG_INFO() << "starting " << info.project_name << " " << info.project_version
+                   << " [" << info.project_vcsid << "], running as "
                    << magic_enum::enum_name(global_service_role);
 
         initialize_metrics_exporter(config->service.telemetry_url,
@@ -86,7 +87,7 @@ int main(int argc, char** argv) {
         if (config->service.enable_traces &&
             !config->service.telemetry_url.empty()) {
             LOG_DEBUG() << "trace endpoint: " << config->service.telemetry_url;
-            initialize_trace(PROJECT_NAME, PROJECT_VERSION,
+            initialize_trace(info.project_name, info.project_version,
                              config->service.telemetry_url);
         }
         auto runner = service_runner(

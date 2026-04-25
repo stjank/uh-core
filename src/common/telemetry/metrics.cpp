@@ -17,7 +17,7 @@
 #include "log.h"
 
 #include <common/utils/common.h>
-#include <config.h>
+#include <common/project/project.h>
 
 #include <magic_enum/magic_enum_switch.hpp>
 #include <magic_enum/magic_enum_utility.hpp>
@@ -95,8 +95,8 @@ void initialize_metrics_exporter(const std::string& endpoint,
 
     auto views = metric_sdk::ViewRegistryFactory::Create();
     auto resource = opentelemetry::sdk::resource::Resource::Create(
-        {{"service.name", PROJECT_NAME},
-         {"service.version", PROJECT_VERSION},
+        {{"service.name", uh::project_info::get().project_name},
+         {"service.version", uh::project_info::get().project_version},
          {"service.role",
           std::string(magic_enum::enum_name(global_service_role))}});
 

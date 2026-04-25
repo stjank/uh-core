@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "configuration.h"
-#include "config.h"
+#include <common/project/project.h>
 #include <CLI/CLI.hpp>
 
 namespace uh::cluster {
@@ -21,9 +21,10 @@ namespace uh::cluster {
 namespace {
 
 void print_vcsid() {
-    std::cout << PROJECT_NAME << " " << PROJECT_VERSION << " (" << __DATE__
+    const auto& info = uh::project_info::get();
+    std::cout << info.project_name << " " << info.project_version << " (" << __DATE__
               << " " << __TIME__ << ")\n"
-              << PROJECT_REPOSITORY << " (" << PROJECT_VCSID << ")\n";
+              << info.project_repository << " (" << info.project_vcsid << ")\n";
     exit(0);
 }
 

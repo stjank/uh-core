@@ -147,7 +147,8 @@ coro<void> handler::_handle(boost::asio::ip::tcp::socket s, StreamType& ds) {
 
                     co_await async_read_header(d_source, parser);
 
-                    const char* via_value = PROJECT_NAME " " PROJECT_VERSION;
+                    const auto& info = project_info::get();
+                    std::string via_value = info.project_name + " " + info.project_version;
                     parser.get().set(field::via, via_value);
 
                     co_await async_write<buffer_size_to_load>(

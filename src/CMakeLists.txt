@@ -25,5 +25,5 @@ add_subdirectory(coordinator)
 add_subdirectory(proxy)
 
 add_executable(uh-cluster main.cpp)
-target_link_libraries(uh-cluster Threads::Threads types telemetry conf entrypoint deduplicator storage coordinator proxy)
+target_link_libraries(uh-cluster Threads::Threads types telemetry conf entrypoint deduplicator storage coordinator proxy project)
 target_precompile_headers(uh-cluster REUSE_FROM uh_precompile_headers)
