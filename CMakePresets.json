@@ -13,6 +13,7 @@
             "generator": "Ninja",
             "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo",
                 "BUILD_TESTS": "ON",
                 "BUILD_TOOLS": "ON",
                 "ENABLE_CCACHE": "OFF",
