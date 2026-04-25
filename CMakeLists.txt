@@ -191,9 +191,6 @@ message(STATUS "Building ${PROJECT_NAME} ${PROJECT_VERSION}...")
 set(UH_BINARY_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/bin)
 file(MAKE_DIRECTORY ${UH_BINARY_OUTPUT_DIR})
 
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/config.h.in
-               ${CMAKE_CURRENT_BINARY_DIR}/config.h)
-
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 

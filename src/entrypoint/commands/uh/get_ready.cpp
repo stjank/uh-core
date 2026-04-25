@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "get_ready.h"
-#include "config.h"
+#include <common/project/project.h>
 #include <entrypoint/http/string_body.h>
 
 using namespace uh::cluster::ep::http;

@@ -17,7 +17,7 @@
 #pragma once
 
 #include "common/telemetry/log.h"
-#include "config.h"
+#include <common/project/project.h>
 
 #include <boost/algorithm/string.hpp>
 #include <iomanip>
@@ -28,7 +28,7 @@ namespace std {
 
 inline ostream& operator<<(ostream& out, const source_location& loc) {
     std::string path = loc.file_name();
-    boost::replace_all(path, PROJECT_SOURCE_DIR, "");
+    boost::replace_all(path, uh::project_info::get().project_source_dir, "");
 
     out << loc.function_name() << " -- " << path << ":" << loc.line();
     return out;

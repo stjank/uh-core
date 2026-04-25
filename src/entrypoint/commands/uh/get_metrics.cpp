@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "get_metrics.h"
-#include "config.h"
+#include <common/project/project.h>
 #include <entrypoint/http/string_body.h>
 
 using namespace uh::cluster::ep::http;
@@ -38,10 +38,10 @@ coro<response> get_metrics::handle(request& req) {
     res.set_body(
         std::make_unique<string_body>("{\n"
                                       "  \"version\": \"" +
-                                      std::string(PROJECT_VERSION) +
+                                      uh::project_info::get().project_version +
                                       "\",\n"
                                       "  \"vcsid\": \"" +
-                                      std::string(PROJECT_VCSID) +
+                                      uh::project_info::get().project_vcsid +
                                       "\",\n"
                                       "  \"raw_data_size\": " +
                                       std::to_string(raw_data_size) +

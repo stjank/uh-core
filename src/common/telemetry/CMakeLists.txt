@@ -21,6 +21,7 @@ add_library(telemetry
 target_compile_options(telemetry PRIVATE -Wno-deprecated-builtins -Wno-deprecated-declarations)
 
 target_link_libraries(telemetry
+                      project
                       magic_enum
                       Boost::log
                       opentelemetry_exporter_otlp_grpc_log

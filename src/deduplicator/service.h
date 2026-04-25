@@ -20,7 +20,7 @@
 #include <common/etcd/registry/service_registry.h>
 #include <common/network/server.h>
 #include <common/telemetry/log.h>
-#include <config.h>
+#include <common/project/project.h>
 #include <storage/global/data_view.h>
 #include <storage/group/externals.h>
 #include <storage/interfaces/remote_storage.h>
