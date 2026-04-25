@@ -16,24 +16,30 @@ jobs:
             image: ubuntu:26.04
 
         steps:
-            - name: Install Git
-              run: apt update && apt install -y git
-
-            - uses: actions/checkout@v4
-              with:
-                  submodules: recursive
-
             - name: Install dependencies
               run: |
                   apt update
                   apt install -y cmake clang ninja-build libpq-dev \
                     postgresql liblmdb++-dev protobuf-compiler-grpc \
                     libprotoc-dev libgrpc++-dev libgrpc-dev libboost-all-dev \
-                    libstdc++-16-dev libicu-dev
+                    libstdc++-16-dev libicu-dev git ccache
+
+            - uses: actions/checkout@v4
+              with:
+                  submodules: recursive
+
+            - name: Cache ccache
+              uses: actions/cache@v4
+              with:
+                  path: ~/.cache/ccache
+                  key: ccache-${{ github.ref_name }}-${{ github.sha }}
+                  restore-keys: |
+                      ccache-${{ github.ref_name }}-
+                      ccache-
 
             - name: Build
               run: |
-                  cmake --preset default
+                  cmake --preset default -DENABLE_CCACHE=ON
                   cmake --build build
 
             - name: Test
