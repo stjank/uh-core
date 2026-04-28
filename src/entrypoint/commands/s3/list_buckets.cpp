@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "list_buckets.h"
+#include <common/telemetry/metrics.h>
 
 #include <boost/property_tree/ptree.hpp>
 

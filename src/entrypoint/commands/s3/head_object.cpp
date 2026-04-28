@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "head_object.h"
+#include <common/telemetry/metrics.h>
 
 #include <entrypoint/utils.h>
 #include <entrypoint/http/command_exception.h>

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "init_multipart.h"
+#include <common/telemetry/metrics.h>
 
 #include "entrypoint/http/command_exception.h"
 

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "complete_multipart.h"
+#include <common/telemetry/metrics.h>
 #include "common/crypto/hash.h"
 #include "common/utils/xml_parser.h"
 #include "entrypoint/http/command_exception.h"

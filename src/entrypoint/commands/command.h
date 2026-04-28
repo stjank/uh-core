@@ -16,8 +16,6 @@
 
 #pragma once
 
-#include <common/telemetry/metrics.h>
-
 #include <entrypoint/http/request.h>
 #include <entrypoint/http/response.h>
 
