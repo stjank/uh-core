@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "put_object.h"
+#include <common/telemetry/metrics.h>
 
 #include <common/crypto/hash.h>
 #include <entrypoint/constant.h>

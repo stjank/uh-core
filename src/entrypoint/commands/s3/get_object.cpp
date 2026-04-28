@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "get_object.h"
+#include <common/telemetry/metrics.h>
 
 #include <common/utils/time_utils.h>
 

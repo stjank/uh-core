@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "delete_objects.h"
+#include <common/telemetry/metrics.h>
 #include "common/utils/xml_parser.h"
 #include "entrypoint/http/command_exception.h"
 

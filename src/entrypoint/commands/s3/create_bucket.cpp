@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "create_bucket.h"
+#include <common/telemetry/metrics.h>
 #include "entrypoint/http/command_exception.h"
 
 using namespace uh::cluster::ep::http;

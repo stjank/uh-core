@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "list_objects.h"
+#include <common/telemetry/metrics.h>
 #include "common/utils/strings.h"
 #include "entrypoint/formats.h"
 #include "entrypoint/http/command_exception.h"
