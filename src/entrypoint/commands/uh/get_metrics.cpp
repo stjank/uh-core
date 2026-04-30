@@ -14,6 +14,7 @@
 
 #include "get_metrics.h"
 #include <common/project/project.h>
+#include <common/telemetry/metrics.h>
 #include <entrypoint/http/string_body.h>
 
 using namespace uh::cluster::ep::http;
