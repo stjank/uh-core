@@ -16,7 +16,11 @@
 
 #pragma once
 
+#include <cstdint>
+#include <memory>
+#include <ranges>
 #include <span>
+#include <stdexcept>
 #include <vector>
 
 extern "C" {

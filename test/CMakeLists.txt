@@ -51,8 +51,6 @@ function(uh_add_test name)
                 uh_test_config ${ARGS_PRIVATE}
         PUBLIC ${ARGS_PUBLIC})
 
-    target_precompile_headers(${target_name} REUSE_FROM uh_precompile_headers)
-
     # execute_process(
     #     COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${target_name} --list_content
     #     ERROR_VARIABLE TEST_LIST

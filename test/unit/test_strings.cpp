@@ -17,7 +17,10 @@
 #include "common/utils/strings.h"
 
 #include <boost/test/unit_test.hpp>
+
 #include <cstring>
+#include <set>
+#include <vector>
 
 namespace uh::cluster {
 

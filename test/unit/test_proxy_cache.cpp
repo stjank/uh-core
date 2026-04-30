@@ -20,6 +20,8 @@
 #include <proxy/cache/lru_cache.h>
 
 #include "test_config.h"
+#include <thread>
+#include <vector>
 
 namespace uh::cluster::proxy::cache {
 

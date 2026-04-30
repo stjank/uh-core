@@ -18,9 +18,8 @@
 
 #include "test_config.h"
 
-#include <boost/asio/buffer.hpp>
-#include <boost/beast/http/parser.hpp>
-#include <boost/beast/http/string_body.hpp>
+#include <boost/asio.hpp>
+#include <boost/beast.hpp>
 #include <boost/optional/optional_io.hpp>
 #include <iostream>
 #include <string>
