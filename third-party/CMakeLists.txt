@@ -25,14 +25,14 @@ option(WITH_STL "Which version of the Standard Library for C++ to use" ON)
 add_subdirectory(opentelemetry-cpp)
 add_subdirectory(nlohmann_json)
 
-add_library(magic_enum INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/magic_enum/include/magic_enum/magic_enum_all.hpp)
+add_library(magic_enum INTERFACE)
 target_include_directories(magic_enum INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/magic_enum/include/)
 
-add_library(zpp_bits INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/zpp_bits/zpp_bits.h)
+add_library(zpp_bits INTERFACE)
 target_include_directories(zpp_bits INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/zpp_bits)
 
 find_library(LMDB_LIBRARY NAMES lmdb REQUIRED)
-add_library(lmdbxx INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/lmdbxx/include/lmdbxx/lmdb++.h)
+add_library(lmdbxx INTERFACE)
 target_include_directories(lmdbxx INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/lmdbxx/include)
 target_link_libraries(lmdbxx INTERFACE lmdb)
 
