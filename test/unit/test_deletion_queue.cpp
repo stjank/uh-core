@@ -19,6 +19,8 @@
 #include <proxy/cache/disk/deletion_queue.h>
 
 #include <memory>
+#include <thread>
+#include <vector>
 
 #include "test_config.h"
 

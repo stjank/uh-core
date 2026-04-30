@@ -14,4 +14,3 @@
 
 add_library(uh_mock_entrypoint entrypoint.cpp)
 target_link_libraries(uh_mock_entrypoint PUBLIC entrypoint)
-target_precompile_headers(uh_mock_entrypoint REUSE_FROM uh_precompile_headers)
