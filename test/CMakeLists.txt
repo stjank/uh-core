@@ -12,13 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-file(DOWNLOAD
-    https://raw.githubusercontent.com/yhirose/cpp-httplib/v0.18.5/httplib.h
-    ${CMAKE_CURRENT_BINARY_DIR}/httplib.h
-)
-
 add_library(httplib INTERFACE)
-target_include_directories(httplib INTERFACE ${CMAKE_BINARY_DIR}/test)
+target_include_directories(httplib INTERFACE ${CMAKE_BINARY_DIR}/test ${CMAKE_CURRENT_SOURCE_DIR})
 
 add_subdirectory(lib)
 
