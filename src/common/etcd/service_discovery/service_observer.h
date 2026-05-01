@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "common/etcd/namespace.h"
+#include <memory>
 
 namespace uh::cluster {
 

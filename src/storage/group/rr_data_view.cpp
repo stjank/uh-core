@@ -16,6 +16,7 @@
 #include "impl/address_utils.h"
 
 #include <common/telemetry/log.h>
+#include <common/utils/pointer_traits.h>
 
 #include <numeric>
 #include <ranges>

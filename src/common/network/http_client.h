@@ -17,6 +17,7 @@
 #pragma once
 
 #include <boost/asio.hpp>
+#include <common/coroutines/coro.h>
 #include <common/network/async_http_client.h>
 #include <common/telemetry/log.h>
 #include <common/types/common_types.h>

@@ -14,6 +14,7 @@
 
 #include "service_registry.h"
 
+#include <common/telemetry/log.h>
 #include <common/etcd/namespace.h>
 #include <common/service_interfaces/hostport.h>
 #include <common/utils/common.h>

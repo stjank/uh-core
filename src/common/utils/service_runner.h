@@ -21,9 +21,7 @@
 #include <any>
 #include <boost/asio.hpp>
 #include <boost/asio/signal_set.hpp>
-#include <condition_variable>
 #include <functional>
-#include <iostream>
 #include <mutex>
 #include <thread>
 #include <vector>

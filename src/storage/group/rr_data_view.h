@@ -18,6 +18,7 @@
 
 #include "config.h"
 
+#include <common/etcd/service_discovery/service_load_balancer.h>
 #include <common/etcd/service_discovery/service_maintainer.h>
 #include <common/etcd/service_discovery/storage_index.h>
 #include <common/types/scoped_buffer.h>

@@ -14,6 +14,7 @@
 
 #include "mock_data_view.h"
 
+#include <common/utils/pointer_traits.h>
 #include <storage/group/impl/address_utils.h>
 
 namespace uh::cluster {

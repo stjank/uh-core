@@ -16,8 +16,6 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "test_config.h"
-
 #include <common/etcd/namespace.h>
 #include <common/etcd/utils.h>
 #include <common/utils/strings.h>

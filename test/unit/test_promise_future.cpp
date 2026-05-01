@@ -14,6 +14,7 @@
 
 #define BOOST_TEST_MODULE "awaitable_promise tests"
 
+#include <common/coroutines/coro.h>
 #include <common/coroutines/promise.h>
 
 #include <util/coroutine.h>

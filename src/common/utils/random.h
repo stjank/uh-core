@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include "common/types/scoped_buffer.h"
 #include <random>
 #include <string>
 

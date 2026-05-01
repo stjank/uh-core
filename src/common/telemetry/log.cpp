@@ -15,6 +15,7 @@
 #include "log.h"
 
 #include <common/project/project.h>
+#include <common/telemetry/otel_log_sink.h>
 
 #include <boost/core/null_deleter.hpp>
 #include <boost/filesystem/fstream.hpp>
@@ -38,7 +39,6 @@
 #include <opentelemetry/sdk/logs/simple_log_record_processor_factory.h>
 
 namespace logging = boost::log;
-namespace attrs = boost::log::attributes;
 namespace expr = boost::log::expressions;
 
 namespace otel_otlp = opentelemetry::exporter::otlp;

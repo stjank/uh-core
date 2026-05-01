@@ -13,16 +13,17 @@
 // limitations under the License.
 
 #include "response.h"
-#include "common/coroutines/promise.h"
-#include "common/types/common_types.h"
-#include "entrypoint/formats.h"
 #include "string_body.h"
+
+#include <common/telemetry/log.h>
+#include <common/coroutines/promise.h>
+#include <common/types/common_types.h>
+#include <entrypoint/formats.h>
+
 #include <boost/property_tree/xml_parser.hpp>
 #include <sstream>
 
 namespace uh::cluster::ep::http {
-
-namespace asio = boost::asio;
 
 response::response()
     : response(http::status::ok) {}

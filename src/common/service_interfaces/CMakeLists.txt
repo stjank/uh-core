@@ -13,3 +13,4 @@
 # limitations under the License.
 
 add_library(service_interfaces INTERFACE)
+target_link_libraries(service_interfaces INTERFACE coroutines)

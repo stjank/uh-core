@@ -18,11 +18,8 @@
 
 #include "common/etcd/service_discovery/service_observer.h"
 #include "common/service_interfaces/storage_interface.h"
-#include "common/utils/pointer_traits.h"
-#include "service_load_balancer.h"
 
 #include <atomic>
-#include <ranges>
 
 namespace uh::cluster {
 

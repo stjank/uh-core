@@ -19,7 +19,6 @@
 #include <common/etcd/namespace.h>
 #include <common/etcd/utils.h>
 #include <common/utils/strings.h>
-#include <type_traits>
 
 namespace uh::cluster {
 

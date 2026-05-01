@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include "host_utils.h"
+#include "common.h"
 
 namespace uh::cluster {
 

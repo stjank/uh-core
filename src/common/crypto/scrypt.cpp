@@ -15,6 +15,8 @@
 #include "scrypt.h"
 
 #include "ossl_base.h"
+
+#include <memory>
 #include <openssl/core_names.h>
 #include <openssl/params.h>
 

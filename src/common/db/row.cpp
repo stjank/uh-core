@@ -13,9 +13,9 @@
 // limitations under the License.
 
 #include "row.h"
-#include "common/telemetry/log.h"
-#include "common/utils/strings.h"
 #include <charconv>
+#include <cstring>
+#include <iomanip>
 #include <endian.h>
 
 namespace uh::cluster::db {

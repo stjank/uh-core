@@ -22,7 +22,6 @@
 #pragma GCC diagnostic ignored "-Wrestrict"
 #endif
 
-#include "common/telemetry/otel_log_sink.h"
 #include "common/utils/common.h"
 
 #include <boost/log/trivial.hpp>

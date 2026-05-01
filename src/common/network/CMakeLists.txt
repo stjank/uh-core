@@ -13,4 +13,4 @@
 # limitations under the License.
 
 add_library(network messenger_core.cpp messenger.cpp tools.cpp)
-target_link_libraries(network zpp_bits telemetry cpr::cpr utils)
+target_link_libraries(network zpp_bits telemetry coroutines cpr::cpr utils)

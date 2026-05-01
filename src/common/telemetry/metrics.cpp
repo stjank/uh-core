@@ -14,23 +14,23 @@
 
 #include "metrics.h"
 
-#include "log.h"
-
 #include <common/utils/common.h>
 #include <common/project/project.h>
 
 #include <magic_enum/magic_enum_switch.hpp>
 #include <magic_enum/magic_enum_utility.hpp>
 
+#include <opentelemetry/metrics/meter.h>
 #include <opentelemetry/sdk/metrics/view/view_registry_factory.h>
 #include <opentelemetry/sdk/metrics/meter_context_factory.h>
+#include <opentelemetry/sdk/metrics/meter_provider_factory.h>
+#include <opentelemetry/sdk/metrics/export/periodic_exporting_metric_reader_factory.h>
 #include <opentelemetry/exporters/otlp/otlp_grpc_metric_exporter_factory.h>
 #include <opentelemetry/exporters/otlp/otlp_grpc_metric_exporter_options.h>
 
 #include <algorithm>
 
 namespace metric_sdk = opentelemetry::sdk::metrics;
-namespace common = opentelemetry::common;
 namespace metrics_api = opentelemetry::metrics;
 namespace otlp_exporter = opentelemetry::exporter::otlp;
 

@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include <common/types/dedupe_response.h>
 #include <common/utils/random.h>
 #include <util/dedupe_fixture.h>
 

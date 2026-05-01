@@ -16,11 +16,9 @@
 
 #pragma once
 
-#include "common/telemetry/log.h"
 #include <common/project/project.h>
-
 #include <boost/algorithm/string.hpp>
-#include <iomanip>
+#include <optional>
 #include <ostream>
 #include <source_location>
 

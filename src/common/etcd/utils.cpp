@@ -16,7 +16,6 @@
 
 #include "namespace.h"
 #include <common/telemetry/log.h>
-#include <format>
 #include <stdexcept>
 
 using namespace std::chrono_literals;

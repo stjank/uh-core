@@ -27,16 +27,11 @@
 #pragma GCC diagnostic ignored "-Wdeprecated-builtins"
 #endif
 
-#include <opentelemetry/metrics/meter.h>
 #include <opentelemetry/metrics/provider.h>
 #include <opentelemetry/nostd/shared_ptr.h>
-#include <opentelemetry/sdk/metrics/export/periodic_exporting_metric_reader_factory.h>
-
-#include <opentelemetry/sdk/metrics/meter_provider_factory.h>
 
 #pragma GCC diagnostic pop
 
-#include <condition_variable>
 #include <string>
 
 namespace uh::cluster {

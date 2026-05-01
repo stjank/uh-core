@@ -21,6 +21,7 @@
 #include <common/utils/pointer_traits.h>
 
 #include <set>
+#include <fcntl.h>
 
 namespace uh::cluster {
 

@@ -17,10 +17,10 @@
 #include <boost/asio.hpp>
 #include <boost/asio/experimental/awaitable_operators.hpp>
 
+#include <boost/test/unit_test.hpp>
+
 #include <chrono>
 #include <tuple>
-
-#include "test_config.h"
 
 using boost::asio::awaitable;
 using boost::asio::use_awaitable;

@@ -16,8 +16,6 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "test_config.h"
-
 #include <common/telemetry/trace/trace.h>
 #include <common/telemetry/trace/trace_asio.h>
 

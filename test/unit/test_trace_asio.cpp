@@ -16,8 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "test_config.h"
-
+#include <common/coroutines/coro.h>
 #include <common/telemetry/trace/trace_asio.h>
 #include <common/types/common_types.h>
 

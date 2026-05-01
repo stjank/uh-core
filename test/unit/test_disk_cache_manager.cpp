@@ -14,12 +14,12 @@
 
 #define BOOST_TEST_MODULE "disk-cache manager tests"
 
-#include <boost/test/unit_test.hpp>
-#include <chrono>
 #include <common/utils/random.h>
 #include <proxy/cache/disk/manager.h>
-#include <thread>
 #include <util/dedupe_fixture.h>
+
+#include <boost/test/unit_test.hpp>
+
 
 namespace uh::cluster::proxy::cache::disk {
 
