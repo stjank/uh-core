@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include "common.h"
 #include <boost/asio.hpp>
 #include <string>
 

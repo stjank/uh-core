@@ -17,6 +17,7 @@
 #pragma once
 
 #include <common/coroutines/promise.h>
+#include <common/coroutines/coro.h>
 
 #include <list>
 #include <memory>

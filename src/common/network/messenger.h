@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <common/types/dedupe_response.h>
 #include "messenger_core.h"
 
 namespace uh::cluster {

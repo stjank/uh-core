@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <common/types/common_types.h>
+#include <common/coroutines/coro.h>
 #include <common/utils/common.h>
 
 #include <boost/asio.hpp>

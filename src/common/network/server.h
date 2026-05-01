@@ -30,7 +30,6 @@
 #include <cstdlib>
 #include <memory>
 #include <string>
-#include <thread>
 #include <unordered_set>
 #include <utility>
 #include <vector>

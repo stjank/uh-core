@@ -14,6 +14,7 @@
 
 #define BOOST_TEST_MODULE "signals tests"
 
+#include <lib/util/output.h>
 #include <boost/asio.hpp>
 
 #define BOOST_PROCESS_VERSION 1

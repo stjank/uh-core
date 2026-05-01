@@ -16,8 +16,6 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "test_config.h"
-
 #include <entrypoint/cors/parser.h>
 
 using namespace uh::cluster::ep;

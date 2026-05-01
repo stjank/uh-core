@@ -17,8 +17,6 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/beast/http/status.hpp>
 
-#include "test_config.h"
-
 #include <cpr/cpr.h>
 #define CPPHTTPLIB_OPENSSL_SUPPORT
 #include <cpr/ssl_options.h>

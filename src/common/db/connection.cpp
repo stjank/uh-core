@@ -13,7 +13,8 @@
 // limitations under the License.
 
 #include "connection.h"
-#include "common/debug/debug.h"
+#include <common/telemetry/log.h>
+
 #include <boost/asio/posix/descriptor.hpp>
 #include <boost/asio/use_awaitable.hpp>
 

@@ -16,9 +16,8 @@
 
 #pragma once
 
-#include "common/types/address.h"
-#include "common/types/big_int.h"
-#include "common/types/common_types.h"
+#include <common/types/address.h>
+#include <common/coroutines/coro.h>
 #include "common/types/scoped_buffer.h"
 
 namespace uh::cluster::storage {

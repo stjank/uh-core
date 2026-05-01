@@ -19,6 +19,8 @@
 
 #include <boost/property_tree/xml_parser.hpp>
 
+#include <set>
+
 using namespace uh::cluster::ep::http;
 
 namespace uh::cluster {

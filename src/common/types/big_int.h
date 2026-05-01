@@ -18,11 +18,8 @@
 
 #include <boost/log/sources/record_ostream.hpp>
 #include <cstdint>
-#include <format>
-#include <functional>
 #include <iomanip>
 #include <iosfwd>
-#include <string>
 
 using uint128_t = __uint128_t;
 
@@ -41,8 +38,7 @@ inline std::ostream& operator<<(std::ostream& os, const __uint128_t& value) {
     return os;
 }
 
-namespace boost {
-namespace log {
+namespace boost::log {
 
 template <typename CharT>
 inline boost::log::basic_record_ostream<CharT>&
@@ -53,5 +49,4 @@ operator<<(boost::log::basic_record_ostream<CharT>& os,
     return os;
 }
 
-} // namespace log
-} // namespace boost
+} // namespace boost::log

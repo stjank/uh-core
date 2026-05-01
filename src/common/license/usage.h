@@ -17,7 +17,7 @@
 #pragma once
 
 #include <common/db/db.h>
-#include <common/types/common_types.h>
+#include <common/utils/pool.h>
 
 namespace uh::cluster {
 

@@ -21,10 +21,10 @@
 
 #include <proxy/asio.h>
 
+#include <boost/core/demangle.hpp>
 #include <boost/beast/core/flat_buffer.hpp>
 #include <boost/beast/http.hpp>
 
-#include <concepts>
 #include <span>
 
 namespace boost::beast::http {
@@ -123,6 +123,22 @@ std::optional<std::uint64_t> get_content_length(const Message& msg) {
 } // namespace boost::beast::http
 
 namespace uh::cluster::proxy {
+
+inline coro<void> async_noop() { co_return; };
+
+template <typename T> struct is_boost_awaitable : std::false_type {};
+
+template <typename T>
+struct is_boost_awaitable<boost::asio::awaitable<T>> : std::true_type {};
+
+template <typename T>
+constexpr bool is_boost_awaitable_v = is_boost_awaitable<T>::value;
+
+template <typename Awaitable>
+requires is_boost_awaitable_v<std::decay_t<Awaitable>>
+inline coro<void> async_wrap(Awaitable&& v) {
+    co_await std::move(v);
+};
 
 template <typename SourceType, typename Parser>
 coro<void> async_read_header(const SourceType& source, Parser& parser) {

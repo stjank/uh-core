@@ -18,11 +18,11 @@
 
 #include <proxy/cache/disk/deletion_queue.h>
 
+#include <boost/test/unit_test.hpp>
+
 #include <memory>
 #include <thread>
 #include <vector>
-
-#include "test_config.h"
 
 namespace uh::cluster::proxy::cache {
 

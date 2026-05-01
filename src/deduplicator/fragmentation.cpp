@@ -14,8 +14,6 @@
 
 #include "fragmentation.h"
 
-#include "config.h"
-
 #include <optional>
 
 namespace uh::cluster {

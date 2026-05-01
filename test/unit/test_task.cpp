@@ -14,11 +14,13 @@
 
 #define BOOST_TEST_MODULE "task tests"
 
-#include <boost/asio.hpp>
 #include <common/coroutines/coro_util.h>
 #include <common/types/common_types.h>
 
-#include "test_config.h"
+#include <boost/asio.hpp>
+#include <boost/test/unit_test.hpp>
+
+#include <iostream>
 
 namespace uh::cluster {
 

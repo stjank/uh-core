@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include "common/db/db.h"
-#include "common/types/common_types.h"
-#include "common/utils/pool.h"
-#include "common/utils/scope_guard.h"
+#include <common/db/db.h>
+#include <common/types/dedupe_response.h>
+#include <common/utils/pool.h>
+#include <common/utils/scope_guard.h>
 
 #include <map>
 

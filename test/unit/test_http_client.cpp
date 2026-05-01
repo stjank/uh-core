@@ -16,8 +16,6 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "test_config.h"
-
 #include <common/network/http_client.h>
 
 #include <mock/http_server/http_server.h>

@@ -19,7 +19,8 @@
 #include <proxy/cache/lfu_cache.h>
 #include <proxy/cache/lru_cache.h>
 
-#include "test_config.h"
+#include <boost/test/unit_test.hpp>
+
 #include <thread>
 #include <vector>
 

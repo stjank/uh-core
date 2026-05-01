@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <common/types/common_types.h>
+#include <common/coroutines/coro.h>
 #include <span>
 
 namespace uh::cluster::ep::http {

@@ -18,7 +18,6 @@
 
 #include <common/types/address.h>
 #include <common/types/big_int.h>
-#include <cstdint>
 
 namespace uh::cluster {
 

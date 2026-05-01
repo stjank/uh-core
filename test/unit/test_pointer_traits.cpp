@@ -14,11 +14,12 @@
 
 #define BOOST_TEST_MODULE "pointer_traits tests"
 
-#include "test_config.h"
-
 #include <boost/test/unit_test.hpp>
 #include <common/utils/common.h>
 #include <common/utils/pointer_traits.h>
+
+#include <lib/util/output.h>
+
 
 // ------------- Tests Suites Follow --------------
 

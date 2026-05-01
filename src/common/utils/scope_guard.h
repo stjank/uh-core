@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include <utility>
+
 namespace uh::cluster {
 
 template <typename fini> class guard {

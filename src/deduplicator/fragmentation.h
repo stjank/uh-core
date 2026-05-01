@@ -21,7 +21,6 @@
 #include <storage/global/data_view.h>
 
 #include <list>
-#include <variant>
 
 namespace uh::cluster {
 

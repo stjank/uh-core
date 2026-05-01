@@ -16,7 +16,6 @@
 
 #pragma once
 
-#include "common/types/scoped_buffer.h"
 #include <functional>
 #include <zpp_bits.h>
 

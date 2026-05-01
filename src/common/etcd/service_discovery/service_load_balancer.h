@@ -16,10 +16,11 @@
 
 #pragma once
 
-#include "common/etcd/service_discovery/service_observer.h"
+#include <common/utils/common.h>
+#include <common/etcd/service_discovery/service_observer.h>
 
 #include <condition_variable>
-#include <set>
+#include <map>
 
 namespace uh::cluster {
 

@@ -19,6 +19,7 @@
 #include "config.h"
 
 #include <common/coroutines/coro_util.h>
+#include <common/utils/pointer_traits.h>
 #include <common/ec/reedsolomon_c.h>
 #include <common/etcd/service_discovery/service_maintainer.h>
 #include <common/etcd/service_discovery/storage_index.h>

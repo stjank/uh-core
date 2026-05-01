@@ -16,8 +16,6 @@
 
 #include <boost/test/unit_test.hpp>
 
-#include "test_config.h"
-
 #include <common/network/async_http_client.h>
 
 #include <boost/beast/http/status.hpp>

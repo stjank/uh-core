@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <common/types/dedupe_response.h>
 #include <common/utils/common.h>
 #include <common/utils/random.h>
 #include <deduplicator/interfaces/local_deduplicator.h>

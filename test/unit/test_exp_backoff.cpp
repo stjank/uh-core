@@ -19,16 +19,12 @@
 #include <boost/asio/steady_timer.hpp>
 #include <boost/test/included/unit_test.hpp>
 
-#include "test_config.h"
-
 #include <common/license/backend_client.h>
 #include <common/license/exp_backoff.h>
 
 #include <util/coroutine.h>
 
 #include <fakeit.hpp>
-
-#include <chrono>
 
 using namespace uh::cluster;
 using namespace fakeit;

@@ -16,7 +16,8 @@
 
 #pragma once
 
-#include <common/types/common_types.h>
+#include <common/coroutines/coro.h>
+#include <common/types/dedupe_response.h>
 #include <common/utils/common.h>
 
 namespace uh::cluster {

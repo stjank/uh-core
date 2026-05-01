@@ -16,8 +16,6 @@
 #define BOOST_TEST_MODULE "service tests"
 #include <boost/test/unit_test.hpp>
 
-#include "test_config.h"
-
 #include <boost/asio.hpp>
 #include <boost/beast.hpp>
 #include <boost/optional/optional_io.hpp>

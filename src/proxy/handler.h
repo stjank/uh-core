@@ -25,6 +25,7 @@
 #include <proxy/socket_io.h>
 #include <proxy/tee_io.h>
 
+#include <common/project/project.h>
 #include <common/telemetry/metrics.h>
 #include <common/utils/protocol_handler.h>
 #include <common/utils/random.h>

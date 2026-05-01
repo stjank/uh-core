@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "common/utils/pool.h"
+#include <common/telemetry/log.h>
 #include "config.h"
 #include "connection.h"
 

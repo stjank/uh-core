@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+add_subdirectory(caches)
+add_subdirectory(coroutines)
 add_subdirectory(crypto)
 add_subdirectory(db)
 add_subdirectory(ec)
