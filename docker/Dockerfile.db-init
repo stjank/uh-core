@@ -1,0 +1,12 @@
+FROM flyway/flyway:10.21
+
+USER root
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+        postgresql-client \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY data/sql/ /flyway/migrations/
+COPY --chmod=755 docker/apply_db_schema.sh /apply_db_schema.sh
+
+ENTRYPOINT ["/apply_db_schema.sh"]
