@@ -1,0 +1,24 @@
+FROM ubuntu:26.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends \
+        libgrpc29t64    \
+        libgrpc++1.51t64    \
+        libpq5  \
+        liblmdb0    \
+        ca-certificates   \
+        libabsl20260107 \
+        libicu78 \
+        libcurl4t64 \
+        adduser && \
+    rm -rf /var/lib/apt/lists/*
+
+ARG BIN_PATH=build/bin
+COPY --chmod=755 ${BIN_PATH}/* /usr/local/bin/
+
+RUN addgroup --system --gid 5000 uh && \
+    adduser --system --uid 5000 --gid 5000 uh && \
+    install --directory --mode=0755 --owner=uh --group=uh /var/lib/uh
+
+USER uh

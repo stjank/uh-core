@@ -1,0 +1,124 @@
+x-uh-cluster-env: &uh-cluster-env
+    UH_LOG_LEVEL: DEBUG
+    UH_LICENSE: '{"version":"v1","customer_id":"UltiHash-Test","license_type":"freemium","storage_cap_gib":1048576,"signature":"E5ulpGbxd5F5mHQA8r0RKxK+nFUKc7dAMHHJxgrNsPEJuqhj54F6LfDx0RAY2vFNPvkYmkwNy8LvJIv9UqS1Bw=="}'
+
+x-uh-cluster-build: &uh-cluster-build
+    context: ..
+    dockerfile: docker/Dockerfile.cluster
+
+x-uh-cluster-service: &uh-cluster-service
+    build: *uh-cluster-build
+    image: uh-core:ci
+    restart: on-failure
+
+services:
+    db:
+        image: postgres:17.9
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: uh
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres"]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+
+    db-init:
+        build:
+            context: ..
+            dockerfile: docker/Dockerfile.db-init
+        depends_on:
+            db:
+                condition: service_healthy
+        environment:
+            DB_USER: postgres
+            DB_HOST: db
+            DB_PORT: 5432
+            PGPASSWORD: uh
+        restart: "no"
+
+    user-init:
+        <<: *uh-cluster-service
+        command:
+            - /bin/sh
+            - -c
+            - >-
+                uh-access user-add --superuser --if-not-exists "$$UH_ROOT_USER" 'root:::' &&
+                uh-access key-add "$$UH_ROOT_USER" "$$UH_ROOT_ACCESS_KEY" "$$UH_ROOT_SECRET_KEY" 2000000000
+        depends_on:
+            db-init:
+                condition: service_completed_successfully
+        environment:
+            UH_DB_HOSTPORT: db:5432
+            UH_DB_USER: postgres
+            UH_DB_PASS: uh
+            UH_ROOT_USER:
+            UH_ROOT_ACCESS_KEY:
+            UH_ROOT_SECRET_KEY:
+        restart: "no"
+
+    etcd:
+        image: quay.io/coreos/etcd:v3.5.12
+        command:
+            - etcd
+            - --listen-client-urls=http://0.0.0.0:2379
+            - --advertise-client-urls=http://etcd:2379
+
+    storage:
+        <<: *uh-cluster-service
+        command: ["/usr/local/bin/uh-cluster", "--registry", "http://etcd:2379", "storage"]
+        depends_on:
+            - etcd
+            - coordinator
+        environment:
+            <<: *uh-cluster-env
+            UH_STORAGE_GROUP_ID: 0
+
+    deduplicator:
+        <<: *uh-cluster-service
+        command: ["/usr/local/bin/uh-cluster", "--registry", "http://etcd:2379", "deduplicator"]
+        depends_on:
+            - etcd
+            - coordinator
+            - storage
+        environment:
+            <<: *uh-cluster-env
+
+    coordinator:
+        <<: *uh-cluster-service
+        command: ["/usr/local/bin/uh-cluster", "--registry", "http://etcd:2379", "coordinator"]
+        depends_on:
+            user-init:
+                condition: service_completed_successfully
+            etcd:
+                condition: service_started
+        environment:
+            <<: *uh-cluster-env
+            UH_DB_HOSTPORT: db:5432
+            UH_DB_USER: postgres
+            UH_DB_PASS: uh
+            UH_STORAGE_GROUPS: '[{"id":0,"type":"ROUND_ROBIN","storages":1}]'
+
+    entrypoint:
+        <<: *uh-cluster-service
+        command: ["/usr/local/bin/uh-cluster", "--registry", "http://etcd:2379", "entrypoint"]
+        depends_on:
+            user-init:
+                condition: service_completed_successfully
+            etcd:
+                condition: service_started
+            coordinator:
+                condition: service_started
+            storage:
+                condition: service_started
+            deduplicator:
+                condition: service_started
+        environment:
+            <<: *uh-cluster-env
+            UH_DB_HOSTPORT: db:5432
+            UH_DB_USER: postgres
+            UH_DB_PASS: uh
+        volumes:
+            - ./policies.json:/etc/uh/policies.json:ro
+        ports:
+            - 8080:8080
