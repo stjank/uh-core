@@ -19,3 +19,6 @@
 [submodule "lib/third-party/CLI11"]
 	path = third-party/CLI11
 	url = https://github.com/CLIUtils/CLI11.git
+[submodule "test/feature/s3-tests"]
+	path = test/feature/s3-tests
+	url = https://github.com/ceph/s3-tests.git

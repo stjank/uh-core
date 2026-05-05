@@ -36,3 +36,39 @@ jobs:
 
             - name: Test
               run: ctest --test-dir build
+
+            - name: Upload test log
+              uses: actions/upload-artifact@v4
+              with:
+                  name: test-log
+                  path: build/Testing/Temporary/LastTest.log
+
+            - name: Upload binaries
+              uses: actions/upload-artifact@v4
+              with:
+                  name: binaries
+                  path: build/bin
+
+    integration-tests:
+        needs: build-and-test
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Checkout s3-tests
+              uses: actions/checkout@v4
+              with:
+                  repository: ceph/s3-tests
+                  path: test/feature/s3-tests
+
+            - uses: actions/download-artifact@v4
+              with:
+                  name: binaries
+                  path: build/bin
+
+            - name: Install s3-tests dependencies
+              run: python3 -m pip install -r test/feature/s3-tests/requirements.txt
+
+            - name: Run integration tests
+              run: bash test/feature/run_test.sh
