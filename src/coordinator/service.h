@@ -73,6 +73,7 @@ public:
     }
     static void publish_configs(etcd_manager& etcd,
                                 const storage::group_configs& group_configs) {
+        LOG_INFO() << "publishing " << group_configs.configs.size() << " storage groups";
         for (const auto& cfg : group_configs.configs) {
             auto stored_config =
                 etcd.get(ns::root.storage_groups.group_configs[cfg.id]);
