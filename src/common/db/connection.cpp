@@ -60,19 +60,25 @@ void log_raised_message(void* arg, const char* message) {
     }
 }
 
+boost::asio::posix::stream_descriptor make_desc(boost::asio::io_context& ioc, PGconn* conn)
+{
+    if (PQstatus(conn) != CONNECTION_OK) {
+        throw std::runtime_error("cannot connect to database");
+    }
+
+    auto fd = PQsocket(conn);
+    if (fd == -1) {
+        throw std::runtime_error("illegal file descriptor for connection");
+    }
+
+    return boost::asio::posix::stream_descriptor(ioc, fd);
+}
+
 } // namespace
 
 connection::connection(boost::asio::io_context& ioc, const connstr& cs)
     : m_ptr(PQconnectdb(cs), PQfinish),
-      m_fd(ioc, PQsocket(m_ptr.get())) {
-    if (PQstatus(m_ptr.get()) != CONNECTION_OK) {
-        throw std::runtime_error("cannot connect: " + cs.printable());
-    }
-
-    if (m_fd.native_handle() == -1) {
-        throw std::runtime_error("illegal file descriptor for connection");
-    }
-
+      m_fd(make_desc(ioc, m_ptr.get())) {
     PQsetNoticeProcessor(m_ptr.get(), log_raised_message, this);
 }
 
