@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${UH_BINARY_OUTPUT_DIR})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${UH_BINARY_OUTPUT_DIR})
-
 add_subdirectory(common)
 add_subdirectory(config)
 add_subdirectory(storage)
