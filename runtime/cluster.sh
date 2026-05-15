@@ -251,7 +251,7 @@ _start_docker() {
 
     echo "Building cluster image from $bin_dir..."
     docker build \
-        --build-arg "BIN_PATH=$bin_dir" \
+        --build-arg "BIN_PATH=${bin_dir#"$REPO_ROOT/"}" \
         -t "$image_tag" \
         -f "$REPO_ROOT/docker/Dockerfile.cluster" \
         "$REPO_ROOT"
