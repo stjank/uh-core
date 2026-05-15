@@ -155,17 +155,13 @@ do_start() {
     echo "Waiting for database initialization..."
     docker compose -f "$COMPOSE_FILE" -p "$project" wait db-init
 
-    echo "Initializing root user..."
-    UH_DB_HOSTPORT="localhost:$DB_PORT" UH_DB_USER=postgres UH_DB_PASS=uh \
-        "$bin_dir/uh-access" user-add --superuser --if-not-exists "$root_user" 'root:::'
-    UH_DB_HOSTPORT="localhost:$DB_PORT" UH_DB_USER=postgres UH_DB_PASS=uh \
-        "$bin_dir/uh-access" key-add "$root_user" "$root_access_key" "$root_secret_key" 2000000000
-
     echo "Starting UH services..."
     if [[ "$mode" == "native" ]]; then
-        _start_native "$bin_dir" "$storage_groups" "$uh_license" "$project"
+        _start_native "$bin_dir" "$storage_groups" "$uh_license" "$project" \
+            "$root_user" "$root_access_key" "$root_secret_key"
     else
-        _start_docker "$bin_dir" "$storage_groups" "$uh_license" "$project"
+        _start_docker "$bin_dir" "$storage_groups" "$uh_license" "$project" \
+            "$root_user" "$root_access_key" "$root_secret_key"
     fi
 
     echo "Waiting for cluster to become available..."
@@ -180,9 +176,16 @@ do_start() {
 
 _start_native() {
     local bin_dir="$1" storage_groups="$2" uh_license="$3" project="$4"
+    local root_user="$5" root_access_key="$6" root_secret_key="$7"
     local registry="http://localhost:$ETCD_PORT"
     local cluster_abs
     cluster_abs="$(cd "$CLUSTER_DIR" && pwd)"
+
+    echo "Initializing root user..."
+    UH_DB_HOSTPORT="localhost:$DB_PORT" UH_DB_USER=postgres UH_DB_PASS=uh \
+        "$bin_dir/uh-access" user-add --superuser --if-not-exists "$root_user" 'root:::'
+    UH_DB_HOSTPORT="localhost:$DB_PORT" UH_DB_USER=postgres UH_DB_PASS=uh \
+        "$bin_dir/uh-access" key-add "$root_user" "$root_access_key" "$root_secret_key" 2000000000
 
     export UH_LOG_LEVEL=DEBUG
     export UH_LICENSE="$uh_license"
@@ -240,6 +243,7 @@ _start_native() {
 
 _start_docker() {
     local bin_dir="$1" storage_groups="$2" uh_license="$3" project="$4"
+    local root_user="$5" root_access_key="$6" root_secret_key="$7"
     local registry="http://localhost:$ETCD_PORT"
     local cluster_abs
     cluster_abs="$(cd "$CLUSTER_DIR" && pwd)"
@@ -251,6 +255,22 @@ _start_docker() {
         -t "$image_tag" \
         -f "$REPO_ROOT/docker/Dockerfile.cluster" \
         "$REPO_ROOT"
+
+    echo "Initializing root user..."
+    docker run --rm \
+        --network host \
+        -e "UH_DB_HOSTPORT=localhost:$DB_PORT" \
+        -e UH_DB_USER=postgres \
+        -e UH_DB_PASS=uh \
+        "$image_tag" \
+        /usr/local/bin/uh-access user-add --superuser --if-not-exists "$root_user" 'root:::'
+    docker run --rm \
+        --network host \
+        -e "UH_DB_HOSTPORT=localhost:$DB_PORT" \
+        -e UH_DB_USER=postgres \
+        -e UH_DB_PASS=uh \
+        "$image_tag" \
+        /usr/local/bin/uh-access key-add "$root_user" "$root_access_key" "$root_secret_key" 2000000000
 
     # Write env file to avoid shell quoting issues with JSON values
     local env_file="$cluster_abs/cluster.env"
