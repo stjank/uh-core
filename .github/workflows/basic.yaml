@@ -87,6 +87,6 @@ jobs:
                   path: .cluster/logs
                   if-no-files-found: ignore
 
-            - name: Delete cluster
+            - name: Stop cluster
               if: always()
-              run: runtime/cluster.sh delete
+              run: runtime/cluster.sh stop
