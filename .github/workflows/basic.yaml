@@ -67,8 +67,26 @@ jobs:
                   name: binaries
                   path: build/bin
 
+            - name: Make binaries executable
+              run: chmod +x build/bin/*
+
             - name: Install s3-tests dependencies
               run: python3 -m pip install -r test/feature/s3-tests/requirements.txt
 
+            - name: Start cluster
+              run: runtime/cluster.sh start --docker --bin-dir build/bin
+
             - name: Run integration tests
-              run: bash test/feature/run_test.sh
+              run: test/feature/run_test.sh
+
+            - name: Upload cluster logs
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: cluster-logs
+                  path: .cluster/logs
+                  if-no-files-found: ignore
+
+            - name: Delete cluster
+              if: always()
+              run: runtime/cluster.sh delete
